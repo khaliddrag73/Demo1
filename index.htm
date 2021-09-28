@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+   <head>
+      <title>Formulaire - JS</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <script type="text/javascript" src="script.js"></script>
+      <style type="text/css">
+         /* Justifie les étiquettes des champs d'édition à droite dans une largeur fixe */
+         label {
+           width: 4em;
+           float: left;
+           text-align: right;
+           margin-right: 0.5em;
+           display: block
+         }
+         h4    { position:relative; top:  20px; }
+
+         /* CSS de positionnement des blocs */
+         #ident  { position:absolute; top:  50px; left:  25px; width:225px; }
+         #carte  { position:absolute; top:  50px; left: 500px; width:250px; }
+         #polit  { position:absolute; top: 120px; left: 580px; width:250px; 
+                   color: white;
+                 }
+         #coord  { position:absolute; top:   0px; left:  75px; 
+                   width: 200px; height: 64px;
+                   background-color: #00FFFF; padding-left: 10px;
+         }
+         #choix  { position:absolute; top: 150px; left:  25px; width:225px;}
+         .flags  { position:relative; top:   5px; left:   5px; }
+         #texte  { position:absolute; top: 150px; left: 300px; }
+         #liste  { position:absolute; top: 360px; left:  25px; width:350px; }
+         
+         #page   { background-color: #778899; height: 390px; width: 800px; }
+         #piedpg { position:absolute; top: 380px; left: 25px; }
+
+         #cancel { position:absolute; top: 375px; left: 600px; }
+         #submit { position:absolute; top: 375px; left: 700px; }
+         
+         #imgProv  { position:absolute; top: 355px; left: 350px; } 
+
+      </style>
+       
+      <script type="text/javascript">
+         // Créez le code JavaScript ici
+      </script>
+   </head>
+
+   <body onload="Load();">
+      <div id="page">
+         <h2 align="center">Les formulaires</h2><br/>
+
+      <!-- Regroupe le logo de l'entreprise avec le nom et l'adresse -->
+         <div id="carte">
+            <img  src="./images/IALogo.jpg" class="logo" alt="Logo" title="Logo de l'entreprise Informatique Argenteuil" />
+            <div id="coord" style="font-weight:bold;">
+               Informatique Argenteuil<br/>
+               5000 rue du vent,<br/>
+               Quekpartville, Qc<br/>
+            </div>
+         </div>
+      
+         <div id="polit"></div>
+      
+         <!-- Formulaire analysé par la fonction validation() à sa soumission -->
+         <form name="frm" id="frm" action="./stool.htm" onSubmit = "return Valider();" >
+            <fieldset id="ident">
+               <legend></legend>
+               <label>Nom:</label>     <input type="text" name="nom"  id="nom"  onclick= "Vider(this);" onblur= "FocusOut(this);"/><br/>
+               <label>Prénom:</label> <input type="text" name="prénom" id="pnom" onclick= "Vider(this);" onblur= "FocusOut(this);"/><br/>
+               <label>NAS:</label>     <input type="text" name="nas"  id="nas" maxlength="11" onclick= "Vider(this);"  onblur= "Nas(this);"/><br/>
+            </fieldset>
+              
+            <fieldset id="choix">
+               <legend></legend>
+               <b>Sexe: </b>
+                     <input type="radio" name="sexe" value="homme" onclick= "btnRd(this);" /> Homme
+                     <input type="radio" name="sexe" value="femme" onclick= "btnRd(this);" /> Femme<br />
+               <br />
+               <b>Langues parlées</b><br />
+                  <input type="checkbox" name="langue" value="FR" /> Français<br />
+                  <input type="checkbox" name="langue" value="AN" /> Anglais<br />
+                  <input type="checkbox" name="langue" value="AR" /> Arabe<br />
+                  <input type="checkbox" name="langue" value="ES" /> Espagnol<br />
+                  <input type="checkbox" name="langue" value="IT" /> Italien<br />
+               <br />
+           </fieldset>
+              
+            <fieldset id="texte">
+               <legend></legend>
+               <b>Description</b><br/>
+               <textarea rows="9" name="description" id="notes" cols="55">&nbsp;</textarea>
+            </fieldset>
+              
+
+            <fieldset id="liste">
+               <legend></legend>
+               <b>Province</b>
+               <select name="prov" id="prov" size="1" onchange="Select(this)" >
+                  <option value="" selected >Prov.</option>
+                  <option value="ab">Alberta</option>
+                  <option value="cb">Colombie-Britanique</option>
+                  <option value="mb">Manitoba</option>
+                  <option value="nb">Nouveau-Brunswick</option>
+                  <option value="ne">Nouvelle-Écosse</option>
+                  <option value="nu">Nunavut</option>
+                  <option value="on">Ontario</option>
+                  <option value="pe">Ile-du-Prince-Édouard</option>
+                  <option value="qc">Québec</option>
+                  <option value="sk">Saskachewan</option>
+                  <option value="tn">Terre-Neuve</option>
+                  <option value="to">Territoires-du-Nord-Ouest</option>
+                  <option value="yu">Yukon</option>
+               </select> 
+            </fieldset>
+              
+            <img src="../images/flag.jpg" width="131px" height="50px;" id="imgProv" name="Image" alt="drapeau"/>
+              
+            <input  type="reset" id="cancel" value="Annuler !" onclick="Init();" />
+
+            <input  type="submit" id="submit" value="Publier" />
+         </form> 	
+
+         <div id="piedpg">
+            <h4>Pour en savoir plus ...</h4>
+            <a href="http://www.w3schools.com/tags/tag_form.asp">Les fortmulaires</a><br/>
+            <a href="http://iasys.ca/CGODIN/420-1B3-GG/notes/12%20-%20CSS%20-%20Reference.pdf">Bases du CSS</a><br/>
+         </div>
+      </div>
+   </body>
+</html>
